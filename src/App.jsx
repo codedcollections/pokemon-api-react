@@ -1,9 +1,12 @@
 import { useState } from "react"
 import "./App.css"
-
+import PokemonImg from "./components/PokemonImg"
+import Pokemon from "./components/Pokemon"
+PokemonImg
 function App() {
   const [count, setCount] = useState(false)
   const [pokemonArr, setPokemonArr] = useState(null)
+  const [fetchedImg, setFetchedImg] = useState(null)
 
   const getPokemon = async () => {
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
@@ -24,9 +27,16 @@ function App() {
     console.log(json)
     //To show the grass type of a pokemon
     console.log(
-      "in the pokemon things are seen as : " +
+      "to find type name of pokemon : " +
         JSON.stringify(json.types[0].type.name)
     )
+    console.log(
+      "to find abilites of pokemon : " + JSON.stringify(json.abilities)
+    )
+    console.log(
+      "sprites of pokemon : " + JSON.stringify(json.sprites.front_default)
+    )
+    setFetchedImg(json.sprites.front_default)
     //let answer = JSON.stringify(json.results)
     /*     setPokemonArr(array) */
     /* 
@@ -38,8 +48,9 @@ function App() {
       <button onClick={getPokemon}>fetch API pokemon</button>
       {pokemonArr &&
         pokemonArr.map((pokemon, i) => (
-          <>
-            <h1 key={i}>{pokemon.name}</h1>
+          <div key={i} className="pokemon-card">
+            <Pokemon data={pokemon} />
+            {/* <h1>{pokemon.name}</h1>
             <button
               onClick={() => {
                 getData(pokemon.url)
@@ -47,8 +58,9 @@ function App() {
             >
               fetch extra info
             </button>
-            <img src="" alt={pokemon.name} />
-          </>
+            {/* {fetchedImg && <img src={fetchedImg} alt={pokemon.name} />} */}
+            {/* {fetchedImg && <PokemonImg url={fetchedImg} />} */}
+          </div>
         ))}
     </>
   )
