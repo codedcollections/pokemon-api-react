@@ -1,44 +1,49 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import PokemonImg from "./PokemonImg"
 
 const Pokemon = (props) => {
   console.log("Pokemon props is seen as: " + JSON.stringify(props.data.name))
-  /* const [count, setCount] = useState(false) */
   const [fetchedImg, setFetchedImg] = useState(null)
+  //Mounting
+  useEffect(() => {
+    console.log("Mounting")
+    const getData = async (url) => {
+      let response = await fetch(`${url}`)
+      let json = await response.json()
+      setFetchedImg(json.sprites.front_default)
+    }
+    {
+      getData(props.data.url)
+    }
 
-  const getData = async (url) => {
-    let response = await fetch(`${url}`)
-    let json = await response.json()
-    let array = json.results
-    console.log(json)
-    //To show the grass type of a pokemon
-    /*     console.log(
-      "to find type name of pokemon : " +
-        JSON.stringify(json.types[0].type.name)
-    ) */
-    console.log(
-      "to find abilites of pokemon : " + JSON.stringify(json.abilities)
-    )
-    console.log(
-      "sprites of pokemon : " + JSON.stringify(json.sprites.front_default)
-    )
-    setFetchedImg(json.sprites.front_default)
-    //let answer = JSON.stringify(json.results)
-    /*     setPokemonArr(array) */
-    /* 
-    setCount(true) */
-  }
+    return () => {
+      console.log("Unmounting!")
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log("Mounting")
+    const getData = async (url) => {
+      let response = await fetch(`${url}`)
+      let json = await response.json()
+      setFetchedImg(json.sprites.front_default)
+    }
+    {
+      getData(props.data.url)
+    }
+    console.log("saw a change in image url!")
+  }, [props.data.url])
 
   return (
     <>
       <h1>{props.data.name}</h1>
-      <button
+      {/*       <button
         onClick={() => {
           getData(props.data.url)
         }}
       >
         show img
-      </button>
+      </button> */}
       {fetchedImg && <PokemonImg url={fetchedImg} />}
     </>
   )

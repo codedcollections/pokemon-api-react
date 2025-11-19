@@ -1,5 +1,7 @@
 const PokemonImg = (props) => {
-  console.log("sees props as: " + props.url)
+  console.log(
+    "Entered pokemonimg compoponent . sees props as: " + JSON.stringify(props)
+  )
   return (
     <>
       <img src={props.url} alt="other" />
