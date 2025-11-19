@@ -5,8 +5,10 @@ import Pokemon from "./components/Pokemon"
 PokemonImg
 function App() {
   const [count, setCount] = useState(false)
-  const [pokemonArr, setPokemonArr] = useState(null)
+  const [pokemonArr, setPokemonArr] = useState([])
   const [fetchedImg, setFetchedImg] = useState(null)
+  const [nameArray, setNameArray] = useState([])
+  const [choice, setChoice] = useState("")
 
   const getPokemon = async () => {
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
@@ -45,11 +47,25 @@ function App() {
   return (
     <>
       <h1>gello</h1>
+      <select
+        name="choice"
+        id="choice"
+        onChange={(event) => setChoice(event.target.value)}
+      >
+        <option value="">Välj kategori</option>
+        {pokemonArr.map((pokemon) => (
+          <option value={pokemon.name}>{pokemon.name}</option>
+        ))}
+        {/*  {pokemonArr.map((type) => (
+                <option value={type}>{type}</option>
+              ))} */}
+      </select>
       <button onClick={getPokemon}>fetch API pokemon</button>
       {pokemonArr &&
         pokemonArr.map((pokemon, i) => (
           <div key={i} className="pokemon-card">
-            <Pokemon data={pokemon} />
+            {/* <Pokemon data={pokemon} /> */}
+
             {/* <h1>{pokemon.name}</h1>
             <button
               onClick={() => {

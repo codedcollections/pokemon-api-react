@@ -39,7 +39,7 @@ const Pokemon = (props) => {
       >
         show img
       </button>
-      {fetchedImg && fetchedImg && <PokemonImg url={fetchedImg} />}
+      {fetchedImg && <PokemonImg url={fetchedImg} />}
     </>
   )
 }
