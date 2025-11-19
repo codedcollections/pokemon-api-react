@@ -2,10 +2,11 @@ import { useState } from "react"
 import "./App.css"
 import PokemonImg from "./components/PokemonImg"
 import Pokemon from "./components/Pokemon"
+import PokemonApplication from "./components/PokemonApplication.jsx"
 PokemonImg
 function App() {
   const [count, setCount] = useState(false)
-  const [pokemonArr, setPokemonArr] = useState([])
+  const [pokemonArr, setPokemonArr] = useState(null)
   const [fetchedImg, setFetchedImg] = useState(null)
   const [nameArray, setNameArray] = useState([])
   const [choice, setChoice] = useState("")
@@ -22,62 +23,10 @@ function App() {
     setCount(true)
   }
 
-  const getData = async (url) => {
-    let response = await fetch(`${url}`)
-    let json = await response.json()
-    let array = json.results
-    console.log(json)
-    //To show the grass type of a pokemon
-    console.log(
-      "to find type name of pokemon : " +
-        JSON.stringify(json.types[0].type.name)
-    )
-    console.log(
-      "to find abilites of pokemon : " + JSON.stringify(json.abilities)
-    )
-    console.log(
-      "sprites of pokemon : " + JSON.stringify(json.sprites.front_default)
-    )
-    setFetchedImg(json.sprites.front_default)
-    //let answer = JSON.stringify(json.results)
-    /*     setPokemonArr(array) */
-    /* 
-    setCount(true) */
-  }
   return (
     <>
-      <h1>gello</h1>
-      <select
-        name="choice"
-        id="choice"
-        onChange={(event) => setChoice(event.target.value)}
-      >
-        <option value="">Välj kategori</option>
-        {pokemonArr.map((pokemon) => (
-          <option value={pokemon.name}>{pokemon.name}</option>
-        ))}
-        {/*  {pokemonArr.map((type) => (
-                <option value={type}>{type}</option>
-              ))} */}
-      </select>
-      <button onClick={getPokemon}>fetch API pokemon</button>
-      {pokemonArr &&
-        pokemonArr.map((pokemon, i) => (
-          <div key={i} className="pokemon-card">
-            {/* <Pokemon data={pokemon} /> */}
-
-            {/* <h1>{pokemon.name}</h1>
-            <button
-              onClick={() => {
-                getData(pokemon.url)
-              }}
-            >
-              fetch extra info
-            </button>
-            {/* {fetchedImg && <img src={fetchedImg} alt={pokemon.name} />} */}
-            {/* {fetchedImg && <PokemonImg url={fetchedImg} />} */}
-          </div>
-        ))}
+      <button onClick={() => getPokemon()}>Start Pokemon Application</button>
+      {pokemonArr && <PokemonApplication data={pokemonArr} />}
     </>
   )
 }
