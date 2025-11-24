@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
 import Pokemon from "./Pokemon"
 
-const PokemonApplication = (props) => {
-  /*   console.log(props) */
-  const pokemonArr = props.data
+const PokemonApplication = ({ pokemonArr }) => {
+  /*   console.log(pokemonArr) */
+  /* const pokemonArr = pokemonArr.data */
   const [choice, setChoice] = useState("")
   const [matched, setMatched] = useState(null)
-  /*   console.log("sees props as: " + JSON.stringify(props.data)) */
+  /*   console.log("sees pokemonArr as: " + JSON.stringify(pokemonArr.data)) */
   //Mounting
   useEffect(() => {
     console.log("Mounting")

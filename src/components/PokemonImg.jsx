@@ -1,10 +1,10 @@
-const PokemonImg = (props) => {
+const PokemonImg = ({ url }) => {
   console.log(
-    "Entered pokemonimg compoponent . sees props as: " + JSON.stringify(props)
+    "Entered pokemonimg compoponent . sees props as: " + JSON.stringify(url)
   )
   return (
     <>
-      <img src={props.url} alt="other" />
+      <img src={url} alt="other" />
     </>
   )
 }

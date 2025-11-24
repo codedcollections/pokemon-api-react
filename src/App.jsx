@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <button onClick={() => getPokemon()}>Start Pokemon Application</button>
-      {pokemonArr && <PokemonApplication data={pokemonArr} />}
+      {pokemonArr && <PokemonApplication pokemonArr={pokemonArr} />}
     </>
   )
 }

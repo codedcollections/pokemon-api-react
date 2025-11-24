@@ -1,19 +1,41 @@
 import { useState, useEffect } from "react"
 import PokemonImg from "./PokemonImg"
 
-const Pokemon = (props) => {
-  console.log("Pokemon props is seen as: " + JSON.stringify(props.data.name))
+const Pokemon = ({ data }) => {
+  console.log(
+    "Pokemon component: Pokemon props is seen as: " + JSON.stringify(data.name)
+  )
   const [fetchedImg, setFetchedImg] = useState(null)
+  const [fetchedWeight, setFetchedWeight] = useState(null)
+  const [fetchedHeight, setFetchedHeight] = useState(null)
+  const [fetchedTypes, setFetchedTypes] = useState(null)
+  const getData = async (url) => {
+    let response = await fetch(`${url}`)
+    let json = await response.json()
+    console.log(
+      "pokemon component. json response from API call is seen as:" +
+        JSON.stringify(json)
+    )
+    console.log(
+      "pokemon component. weight is seen as:" + JSON.stringify(json.weight)
+    )
+    console.log(
+      "pokemon component. show types:" +
+        JSON.stringify(JSON.stringify(json.types))
+    )
+    console.log(
+      "pokemon component. height measurement:" + JSON.stringify(json.height)
+    )
+    setFetchedImg(json.sprites.front_default)
+    setFetchedWeight(json.weight)
+    setFetchedHeight(json.height)
+  }
   //Mounting
   useEffect(() => {
     console.log("Mounting")
-    const getData = async (url) => {
-      let response = await fetch(`${url}`)
-      let json = await response.json()
-      setFetchedImg(json.sprites.front_default)
-    }
+
     {
-      getData(props.data.url)
+      getData(data.url)
     }
 
     return () => {
@@ -22,21 +44,21 @@ const Pokemon = (props) => {
   }, [])
 
   useEffect(() => {
-    console.log("Mounting")
-    const getData = async (url) => {
-      let response = await fetch(`${url}`)
-      let json = await response.json()
-      setFetchedImg(json.sprites.front_default)
-    }
     {
-      getData(props.data.url)
+      getData(data.url)
     }
     console.log("saw a change in image url!")
-  }, [props.data.url])
+  }, [data.url])
 
   return (
     <>
-      <h1>{props.data.name}</h1>
+      <h1>{data.name}</h1>
+
+      <div className="pokemon-details">
+        <h2>type:</h2>
+        <h2>weight:{"test text"}</h2>
+        <h2>height:</h2>
+      </div>
       {/*       <button
         onClick={() => {
           getData(props.data.url)
