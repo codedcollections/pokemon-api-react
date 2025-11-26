@@ -1,54 +1,38 @@
 import { useState, useEffect } from "react"
-import Pokemon from "./Pokemon"
+import Pokemon from "../Pokemon/Pokemon"
+import s from "./PokemonApplication.module.css"
 
 const PokemonApplication = ({ pokemonArr }) => {
-  /*   console.log(pokemonArr) */
-  /* const pokemonArr = pokemonArr.data */
   const [choice, setChoice] = useState("")
   const [matched, setMatched] = useState(null)
-  /*   console.log("sees pokemonArr as: " + JSON.stringify(pokemonArr.data)) */
-  //Mounting
-  useEffect(() => {
-    console.log("Mounting")
-
-    return () => {
-      console.log("Unmounting!")
-    }
-  }, [])
 
   return (
-    <>
-      <h1>hi</h1>
+    <div>
       <h1> Pokemon application</h1>
-      <div className="choose-pokemon">
+      <div className={s.choosepokemon}>
         <select
           name="choice"
           id="choice"
           onChange={(event) => setChoice(event.target.value)}
         >
-          <option value="">Välj kategori</option>
+          <option value="">Choose a Pokemon</option>
           {pokemonArr.map((pokemon, i) => (
             <option key={i} value={pokemon.name}>
               {pokemon.name}
             </option>
           ))}
-          {/*  {pokemonArr.map((type) => (
-                 <option value={type}>{type}</option>
-               ))} */}
         </select>
         <button
           onClick={() => {
             let found = pokemonArr.find((element) => element.name === choice)
-            console.log("Found is: " + JSON.stringify(found))
             setMatched(found)
-            console.log("matched is " + matched)
           }}
         >
           Show Pokemon
         </button>
       </div>
       {matched && <Pokemon data={matched} />}
-    </>
+    </div>
   )
 }
 export default PokemonApplication
