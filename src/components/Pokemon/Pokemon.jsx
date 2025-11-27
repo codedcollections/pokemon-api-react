@@ -46,7 +46,7 @@ const Pokemon = ({ data }) => {
         )}
         <div className={s.textinfo}>
           <p>
-            <strong>type:</strong>
+            <strong>type(s): </strong>
             {fetchedTypes.map((types, i) => (
               <span key={i}> {types.type.name} </span>
             ))}
