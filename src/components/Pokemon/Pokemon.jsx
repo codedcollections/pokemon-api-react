@@ -52,12 +52,11 @@ const Pokemon = ({ data }) => {
             ))}
           </p>
           <p>
-            <strong>weight:</strong>
+            <strong>weight: </strong>
             {fetchedWeight}
           </p>
-
           <p>
-            <strong>height:</strong>
+            <strong>height: </strong>
             {fetchedHeight}
           </p>
         </div>

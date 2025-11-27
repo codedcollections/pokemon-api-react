@@ -4,12 +4,12 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    margin-top:2rem;
+    margin-top:4rem;
     background: #d23ffb;
     background: radial-gradient(circle,rgba(210, 63, 251, 1) 0%, rgba(105, 9, 107, 1) 100%);
     max-width: 50%;
-    
-    border: 1rem solid yellow;
+    border: 1rem solid rgb(247, 247, 40);
+    box-shadow: 1rem 1rem 3rem 0.02rem rgb(75, 42, 0);
     border-radius: 2rem;
     padding:1rem;
     color:black;
