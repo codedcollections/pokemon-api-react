@@ -1,6 +1,7 @@
 # 🪪 Pokémon API React
 
 React app powered by Vite with a clean component-based UI that displays Pokémon data fetched from an API.
+[Live Demo](https://pokemon-api-react-azure.vercel.app/)
 
 ## 🚀 Quick start
 
@@ -31,7 +32,6 @@ React app powered by Vite with a clean component-based UI that displays Pokémon
 - `npm run dev` — start the Vite development server
 - `npm run build` — build the production app
 - `npm run preview` — preview the production build locally
-- `npm run lint` — run ESLint checks
 
 ## Notes
 
