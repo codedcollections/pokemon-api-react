@@ -1,16 +1,39 @@
-# React + Vite
+# 🪪 Pokémon API React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React app powered by Vite with a clean component-based UI that displays Pokémon data fetched from an API.
 
-Currently, two official plugins are available:
+## 🚀 Quick start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone the repo:
 
-## React Compiler
+   ```bash
+   git clone https://github.com/codedcollections/pokemon-api-react.git
+   cd pokemon-api-react
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Install dependencies:
 
-## Expanding the ESLint configuration
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open the app in your browser:
+   - Visit `http://localhost:5173`
+
+## Available commands
+
+- `npm run dev` — start the Vite development server
+- `npm run build` — build the production app
+- `npm run preview` — preview the production build locally
+- `npm run lint` — run ESLint checks
+
+## Notes
+
+- This project uses React 19 and Vite.
+- Update the GitHub clone URL with your own repository path before publishing.
